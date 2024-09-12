@@ -34,11 +34,11 @@
 #include "DEV_Config.h"
 
 // Display resolution
-#define EPD_4IN2_V2_WIDTH       400
-#define EPD_4IN2_V2_HEIGHT      300
+#define EPD_4IN2_V2_WIDTH 400
+#define EPD_4IN2_V2_HEIGHT 300
 
-#define Seconds_1_5S      0
-#define Seconds_1S        1
+#define Seconds_1_5S 0
+#define Seconds_1S 1
 
 void EPD_4IN2_V2_Init(void);
 void EPD_4IN2_V2_Init_Fast(UBYTE Mode);

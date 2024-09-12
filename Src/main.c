@@ -26,6 +26,7 @@
 #include "EPD_Test.h"
 #include "EPD_4in2_V2.h"
 #include "GUI_Paint.h"
+#include "usbd_cdc_if.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -102,8 +103,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    loop();
-    // EPD_test();
+    // loop();
+    EPD_test();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -244,7 +245,7 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 /**
- * @brief Overrider to pipe printf to USB-CTC
+ * @brief Pipes printf to USB_CDC
  *
  * @param file
  * @param ptr
@@ -253,18 +254,8 @@ static void MX_GPIO_Init(void)
  */
 int _write(int file, char *ptr, int len)
 {
-  static uint8_t rc = USBD_OK;
-  do
-  {
-    rc = CDC_Transmit_FS(ptr, len);
-  } while (USBD_BUSY == rc);
-
-  if (USBD_FAIL == rc)
-  {
-    /// NOTE: Should never reach here.
-    /// TODO: Handle this error.
-    return 0;
-  }
+  (void)file;
+  CDC_Transmit_FS((uint8_t *)ptr, len);
   return len;
 }
 /* USER CODE END 4 */
