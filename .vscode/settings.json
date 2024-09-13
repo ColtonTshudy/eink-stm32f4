@@ -3,6 +3,7 @@
         ".clang-format": "yaml",
         "epd_test.h": "c",
         "epd_4in2_v2.h": "c",
-        "main.h": "c"
+        "main.h": "c",
+        "type_traits": "c"
     }
 }

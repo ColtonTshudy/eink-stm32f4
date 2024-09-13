@@ -8,6 +8,7 @@
 #include "GUI_Paint.h"
 #include "EPD_4in2_V2.h"
 #include "fonts.h"
+#include "debug.h"
 
 #define PI 3.14159265358979323846
 #define WIDTH EPD_4IN2_V2_WIDTH
@@ -23,9 +24,10 @@ typedef struct
     Point3D points[8];
 } Cube;
 
-void setup(void);
-void loop(void);
+void setup();
+void loop();
 void updateBusyLED();
 void displayNumber(int);
+void displayTick();
 
 #endif // PROGRAM_H
