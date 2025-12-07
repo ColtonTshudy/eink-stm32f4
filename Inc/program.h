@@ -1,11 +1,6 @@
-#ifndef PROGRAM_H
-#define PROGRAM_H
+#pragma once
 
-#include <math.h>
-#include <stdlib.h>
-#include <string.h>
 #include "stm32f4xx_hal.h"
-#include "debug.h"
 
 // Waveshare setups
 #define PI 3.14159265358979323846
@@ -24,8 +19,4 @@ typedef struct
 
 void setup();
 void loop();
-void updateBusyLED();
-void displayNumber(int);
-void displayTick();
-
-#endif // PROGRAM_H
+void heartbeat();

@@ -1,28 +1,28 @@
 #include "program.h"
 #include "debugger.h"
 #include "display_epaper_42.h"
+#include <stdio.h>
 // #include "lvgl.h"
 
 void setup()
 {
-    printf("Hello, world!");
     rtt_init();
+    printf("Hello, world!");
 }
 
 void loop()
 {
+    heartbeat();
 }
 
-void updateBusyLED()
+void heartbeat()
 {
-    if (HAL_GPIO_ReadPin(BUSY_GPIO_Port, BUSY_Pin))
+    uint16_t blink_duration = 500;
+    static uint32_t last_time = 0;
+    uint32_t this_time = HAL_GetTick();
+    if (this_time - last_time > blink_duration)
     {
-        // display is busy
-        HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, 0);
-    }
-    else
-    {
-        // display is not busy
-        HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, 1);
+        HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+        last_time = this_time;
     }
 }
