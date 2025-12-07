@@ -23,9 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "program.h"
-#include "EPD_Test.h"
 #include "EPD_4in2_V2.h"
-#include "GUI_Paint.h"
 #include "usbd_cdc_if.h"
 /* USER CODE END Includes */
 

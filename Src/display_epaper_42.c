@@ -16,7 +16,7 @@
 #define EPD_HEIGHT 300
 
 // LVGL display buffer (1/10th of screen for memory efficiency)
-#define BUFFER_SIZE (EPD_WIDTH * EPD_HEIGHT / 10)
+#define BUFFER_SIZE (EPD_WIDTH * EPD_HEIGHT / 20)
 
 // Partial refresh configuration
 #define PARTIAL_REFRESH_ENABLED 1  // Set to 0 to disable partial updates
