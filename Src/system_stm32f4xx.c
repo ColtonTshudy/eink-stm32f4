@@ -166,9 +166,6 @@ const uint8_t APBPrescTable[8]  = {0, 0, 0, 0, 1, 2, 3, 4};
   */
 void SystemInit(void)
 {
-  volatile uint32_t *DEMCR = (uint32_t *)0xE000EDFC;
-    *DEMCR &= ~(1UL << 0);  // Clear VC_CORERESET bit
-    
   /* FPU settings ------------------------------------------------------------*/
   #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
     SCB->CPACR |= ((3UL << 10*2)|(3UL << 11*2));  /* set CP10 and CP11 Full Access */

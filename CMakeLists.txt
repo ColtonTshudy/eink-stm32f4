@@ -42,6 +42,10 @@ add_executable(${CMAKE_PROJECT_NAME})
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
 
+# LVGL
+set(LV_BUILD_CONF_PATH ${CMAKE_HOME_DIRECTORY}/Inc/lv_conf.h)
+add_subdirectory(${CMAKE_HOME_DIRECTORY}/components/lvgl)
+
 # Link directories setup
 target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined library search paths
@@ -53,28 +57,28 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
     ${CMAKE_HOME_DIRECTORY}/Src/program.c
         ${CMAKE_HOME_DIRECTORY}/Src/debugger.c
-    ${CMAKE_HOME_DIRECTORY}/User/Examples/EPD_4in2_V2_test.c
-    ${CMAKE_HOME_DIRECTORY}/User/Config/DEV_Config.c    
-    ${CMAKE_HOME_DIRECTORY}/User/GUI/GUI_Paint.c
-    ${CMAKE_HOME_DIRECTORY}/User/e-Paper/EPD_4in2_V2.c
-    ${CMAKE_HOME_DIRECTORY}/User/Fonts/font8.c
-    ${CMAKE_HOME_DIRECTORY}/User/Fonts/font12.c
-    ${CMAKE_HOME_DIRECTORY}/User/Fonts/font12CN.c
-    ${CMAKE_HOME_DIRECTORY}/User/Fonts/font16.c
-    ${CMAKE_HOME_DIRECTORY}/User/Fonts/font20.c
-    ${CMAKE_HOME_DIRECTORY}/User/Fonts/font24.c
-    ${CMAKE_HOME_DIRECTORY}/User/Fonts/font24CN.c
-    ${CMAKE_HOME_DIRECTORY}/User/Examples/ImageData.c
+    ${CMAKE_HOME_DIRECTORY}/components/waveshare/Examples/EPD_4in2_V2_test.c
+    ${CMAKE_HOME_DIRECTORY}/components/waveshare/Config/DEV_Config.c    
+    ${CMAKE_HOME_DIRECTORY}/components/waveshare/GUI/GUI_Paint.c
+    ${CMAKE_HOME_DIRECTORY}/components/waveshare/e-Paper/EPD_4in2_V2.c
+    ${CMAKE_HOME_DIRECTORY}/components/waveshare/Fonts/font8.c
+    ${CMAKE_HOME_DIRECTORY}/components/waveshare/Fonts/font12.c
+    ${CMAKE_HOME_DIRECTORY}/components/waveshare/Fonts/font12CN.c
+    ${CMAKE_HOME_DIRECTORY}/components/waveshare/Fonts/font16.c
+    ${CMAKE_HOME_DIRECTORY}/components/waveshare/Fonts/font20.c
+    ${CMAKE_HOME_DIRECTORY}/components/waveshare/Fonts/font24.c
+    ${CMAKE_HOME_DIRECTORY}/components/waveshare/Fonts/font24CN.c
+    ${CMAKE_HOME_DIRECTORY}/components/waveshare/Examples/ImageData.c
 )
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined include paths
-    ${CMAKE_HOME_DIRECTORY}/User/Config
-    ${CMAKE_HOME_DIRECTORY}/User/e-Paper
-    ${CMAKE_HOME_DIRECTORY}/User/Examples
-    ${CMAKE_HOME_DIRECTORY}/User/Fonts
-    ${CMAKE_HOME_DIRECTORY}/User/GUI
+    ${CMAKE_HOME_DIRECTORY}/components/waveshare/Config
+    ${CMAKE_HOME_DIRECTORY}/components/waveshare/e-Paper
+    ${CMAKE_HOME_DIRECTORY}/components/waveshare/Examples
+    ${CMAKE_HOME_DIRECTORY}/components/waveshare/Fonts
+    ${CMAKE_HOME_DIRECTORY}/components/waveshare/GUI
 )
 
 # Add project symbols (macros)
@@ -85,6 +89,8 @@ target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
 # Add linked libraries
 target_link_libraries(${CMAKE_PROJECT_NAME}
     stm32cubemx
-
+    lvgl
     # Add user defined libraries
 )
+
+
