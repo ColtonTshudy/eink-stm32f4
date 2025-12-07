@@ -1,4 +1,5 @@
 #include "program.h"
+#include "debugger.h"
 
 // TODO add framerate counter to loop()
 
@@ -8,6 +9,7 @@ extern TIM_HandleTypeDef htim2;
 
 void setup()
 {
+    rtt_init();
     if (HAL_TIM_Base_Start_IT(&htim2) != HAL_OK)
     {
         Error_Handler();

@@ -52,6 +52,7 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
     # Add user sources here
     ${CMAKE_HOME_DIRECTORY}/Src/program.c
+        ${CMAKE_HOME_DIRECTORY}/Src/debugger.c
     ${CMAKE_HOME_DIRECTORY}/User/Examples/EPD_4in2_V2_test.c
     ${CMAKE_HOME_DIRECTORY}/User/Config/DEV_Config.c    
     ${CMAKE_HOME_DIRECTORY}/User/GUI/GUI_Paint.c

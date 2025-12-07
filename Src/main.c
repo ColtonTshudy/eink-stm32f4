@@ -292,20 +292,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-/**
- * @brief Pipes printf to USB_CDC
- *
- * @param file
- * @param ptr
- * @param len
- * @return int
- */
-int _write(int file, char *ptr, int len)
-{
-  (void)file;
-  CDC_Transmit_FS((uint8_t *)ptr, len);
-  return len;
-}
+
 /* USER CODE END 4 */
 
 /**
