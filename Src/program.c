@@ -1,6 +1,7 @@
 #include "program.h"
 #include "debugger.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include "lvgl.h"
 #include "EPD_4in2_V2.h"
 
@@ -81,7 +82,12 @@ void loop()
 {
     lv_timer_handler();
     heartbeat();
-    HAL_Delay(100);
+
+    uint16_t y = rand() % 300;
+    uint16_t x = rand() % 400;
+
+    memset(buf, 0xAA, BUF_SIZE);
+    EPD_4IN2_V2_PartialDisplay(buf + 8, x, y, x + 16, y + 16);
 }
 
 void heartbeat()

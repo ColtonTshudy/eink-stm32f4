@@ -75,12 +75,10 @@ parameter:
 ******************************************************************************/
 static void EPD_4IN2_V2_Reset(void)
 {
-    DEV_Digital_Write(EPD_RST_PIN, 1);
-    DEV_Delay_ms(100);
     DEV_Digital_Write(EPD_RST_PIN, 0);
-    DEV_Delay_ms(2);
+    DEV_Delay_ms(10);
     DEV_Digital_Write(EPD_RST_PIN, 1);
-    DEV_Delay_ms(100);
+    DEV_Delay_ms(10);
 }
 
 /******************************************************************************
@@ -299,7 +297,6 @@ void EPD_4IN2_V2_Init_Fast(UBYTE Mode)
 	
     EPD_4IN2_V2_ReadBusy();
 }
-
 
 void EPD_4IN2_V2_Init_4Gray(void)
 {
