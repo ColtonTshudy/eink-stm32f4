@@ -42,7 +42,7 @@ void rtt_init(void)
     _SEGGER_RTT.up[0].size = sizeof(rtt_buffer);
     _SEGGER_RTT.up[0].write_pos = 0;
     _SEGGER_RTT.up[0].read_pos = 0;
-    _SEGGER_RTT.up[0].flags = SEGGER_RTT_MODE_NO_BLOCK_SKIP;
+    _SEGGER_RTT.up[0].flags = SEGGER_RTT_MODE_BLOCK_IF_FIFO_FULL;
 }
 
 // Write function
@@ -58,16 +58,17 @@ void rtt_write(const char *data, uint32_t len)
         // 1. wait infinitely for the buffer to be read
         // 2. stop writing to the buffer if it's full (buffer will become stale)
 
-        // // Wait if buffer full
-        // while (next_pos == read_pos) {
-        //     read_pos = _SEGGER_RTT.up[0].read_pos;
-        // }
+        // Wait if buffer full
+        while (next_pos == read_pos)
+        {
+            read_pos = _SEGGER_RTT.up[0].read_pos;
+        }
 
         // Skip this byte if buffer is full
-        if (next_pos == read_pos)
-        {
-            continue; // Drop the data, don't block
-        }
+        // if (next_pos == read_pos)
+        // {
+        //     continue; // Drop the data, don't block
+        // }
 
         _SEGGER_RTT.up[0].buffer[write_pos] = data[i];
         _SEGGER_RTT.up[0].write_pos = next_pos;
